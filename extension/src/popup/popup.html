@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Workday AI Autofill</title>
+  <style>
+    body {
+      width: 420px;
+      margin: 0;
+      padding-bottom: 24px;
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+      background-color: #f9f9fb;
+      color: #333;
+    }
+    header {
+      background-color: #1a1a2e;
+      color: white;
+      padding: 16px;
+      text-align: center;
+      font-size: 18px;
+      font-weight: bold;
+    }
+    .section {
+      padding: 16px;
+      border-bottom: 1px solid #eaeaea;
+      background-color: white;
+    }
+    .hidden { display: none !important; }
+    button {
+      background-color: #1a1a2e;
+      color: white;
+      border: none;
+      padding: 8px 12px;
+      border-radius: 4px;
+      cursor: pointer;
+      font-weight: 500;
+      width: 100%;
+      margin-top: 8px;
+    }
+    button:hover { background-color: #2a2a4a; }
+    button:disabled {
+      background-color: #ccc;
+      color: #666;
+      cursor: not-allowed;
+    }
+    .status-success { color: green; font-weight: bold; }
+    .status-error { color: red; font-weight: bold; }
+    .status-warning { color: orange; font-weight: bold; }
+    pre {
+      background: #f4f4f4;
+      padding: 8px;
+      border-radius: 4px;
+      font-size: 12px;
+      max-height: 120px;
+      overflow-y: auto;
+      white-space: pre-wrap;
+      word-wrap: break-word;
+    }
+    label { font-size: 14px; font-weight: 600; display: block; margin-bottom: 8px; }
+    input[type="file"] { margin-bottom: 8px; width: 100%; }
+    .banner {
+        padding: 8px;
+        border-radius: 4px;
+        margin-bottom: 8px;
+        font-weight: bold;
+        background-color: #fff3cd;
+        color: #856404;
+    }
+  </style>
+</head>
+<body>
+  <header>Workday AI Autofill</header>
+
+  <!-- 2. Resume Upload -->
+  <div class="section">
+    <label>Resume Upload</label>
+    <input type="file" id="resumeFile" accept=".pdf,.docx" />
+    <button id="parseBtn">Parse Resume</button>
+    <p id="status">Ready</p>
+  </div>
+
+  <!-- 3. Parsed Resume -->
+  <div class="section hidden" id="parsedSection">
+    <label>Parsed Resume</label>
+    <details>
+      <summary>View JSON</summary>
+      <pre id="parsedOutput"></pre>
+    </details>
+  </div>
+
+  <!-- 4. Field Mapping -->
+  <div class="section hidden" id="mappingSection">
+    <label>Field Mapping</label>
+    <button id="scanMapBtn">Map Fields</button>
+    <details>
+      <summary>View Mappings</summary>
+      <pre id="mappingOutput"></pre>
+    </details>
+  </div>
+
+  <!-- 5. Autofill -->
+  <div class="section hidden" id="autofillSection">
+    <label>Autofill</label>
+    <button id="autofillBtn">Autofill</button>
+    <details class="hidden" id="autofillDetails">
+      <summary>View Autofill Results</summary>
+      <pre id="autofillOutput"></pre>
+    </details>
+  </div>
+
+  <!-- 6. Step Navigation -->
+  <div class="section hidden" id="navigationSection">
+    <label>Step Navigation</label>
+    <button id="reviewBtn">Review Current Step</button>
+    <button id="nextBtn" class="hidden">Next Step</button>
+    <button id="submitBtn" disabled class="hidden">Submit Application</button>
+  </div>
+
+  <!-- 7. Review Panel -->
+  <div class="section hidden" id="reviewPanel">
+    <label>Review Panel</label>
+    <div id="submitWarning" class="banner hidden">Final Submit Button Detected!</div>
+    <p>Required fields on this step: <span id="filledCount">0</span></p>
+    <p>Missing Required Fields:</p>
+    <ul id="missingRequiredList" style="color:red; font-size: 12px;"></ul>
+  </div>
+
+  <script src="../../vendor/mammoth.browser.min.js"></script>
+  <script type="module" src="popup.js"></script>
+</body>
+</html>

@@ -1,0 +1,19 @@
+Target Applications
+
+Example job postings for testing:
+
+1. NVIDIA:
+https://nvidia.wd5.myworkdayjobs.com/en-US/NVIDIAExternalCareerSite/details/Senior-Software-Architect --- Deep-Le
+arning-and-HPC-Communications JR2016116
+
+2. NVIDIA:
+https://nvidia.wd5.myworkdavjobs.com/en-US/NVIDIAExternalCareerSite/details/Senior-DFT-Engineer JR
+2022681
+
+3. Target:
+https://target.wd5.myworkdayjobs.com/en-US/targetcareers/details/ETL-GM --- Food-Sales R000045211
+7
+
+4. Target
+https://target.wd5.myworkdayjobs.com/en-US/targetcareers/details/Food --- Beverage-Team-Leader R00
+00452489
